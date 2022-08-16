@@ -1,11 +1,10 @@
 import { Button, Form, Input } from "antd";
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setPlayers } from "../redux/game/gameSlice";
 
 const Header = () => {
   const dispatch = useDispatch();
-  const players = useSelector((state) => state.game.players);
 
   const onFinish = (values) => {
     const { player1, player2 } = values;
@@ -16,7 +15,6 @@ const Header = () => {
     console.log("Failed:", errorInfo);
   };
 
-  console.log(players);
   return (
     <>
       <Form
@@ -76,13 +74,12 @@ const Header = () => {
             },
           ]}
           style={{ marginTop: "10px" }}
-
         >
           <Input />
         </Form.Item>
 
         <Form.Item>
-          <Button type="primary" htmlType="submit">
+          <Button type="text" htmlType="submit">
             Submit
           </Button>
         </Form.Item>

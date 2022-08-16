@@ -1,65 +1,66 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const player = {
-  name: "",
-  score: 0,
-};
+const players = [];
+const playerScore = [];
 
-const players = [
+const playersDetail = [
   {
-    name: "Mustafa",
-    score: 0,
+    name: players[0],
+    score: playerScore[0],
+    symbol: "X",
   },
   {
-    name: "Polat",
-    score: 0,
+    name: players[1],
+    score: playerScore[1],
+    symbol: "O",
   },
 ];
 
-const playerDetail = {
-  player1: players[0],
-  player2: players[1],
-};
-
+const winCombinations = [
+  [0, 1, 2],
+  [3, 4, 5],
+  [6, 7, 8],
+  [0, 3, 6],
+  [1, 4, 7],
+  [2, 5, 8],
+  [0, 4, 8],
+  [2, 4, 6],
+];
 
 const gameSlice = createSlice({
-  name: "xox",
+  name: "game",
   initialState: {
-    board: [
-      [null, null, null],
-      [null, null, null],
-      [null, null, null],
-    ],
-    player,
-    playerDetail,
+    board: Array(9).fill("-"),
     players,
-    totalCordinants: [],
+    playersDetail,
+    playerScore,
+    currentPlayer: "X",
+    winnerXOX: "",
+    winCombinations,
   },
   reducers: {
-    changePlayer: (state, action) => {
-      state.currentPlayer = state.currentPlayer === "X" ? "O" : "X";
-    },
-    resetGame: (state) => {
-      state.board = [
-        [null, null, null],
-        [null, null, null],
-        [null, null, null],
-      ];
-      state.totalCordinants = [];
-    },
-    allCoordinants: (state, action) => {
-      state.totalCordinants.push(action.payload);
-    },
     setPlayers: (state, action) => {
       state.players = action.payload;
     },
-    playerName: (state, action) => {
-      state.playerDetail[action.payload].name = state.currentPlayer;
-    }
-
+    setBoardCurrentPlayer: (state, action) => {
+      state.board = action.payload;
+    },
+    changePlayer: (state) => {
+      state.currentPlayer = state.currentPlayer === "X" ? "O" : "X";
+    },
+    winnerReducer: (state, action) => {
+      state.winnerXOX = action.payload;
+    },
+    playerScoreReducer: (state, action) => {
+      state.playerScore = action.payload;
+    },
   },
 });
 
-export const { selectBoard, changePlayer, resetGame, allCoordinants, setPlayers, playerName } =
-  gameSlice.actions;
+export const {
+  setPlayers,
+  setBoardCurrentPlayer,
+  changePlayer,
+  winnerReducer,
+} = gameSlice.actions;
 export default gameSlice.reducer;
