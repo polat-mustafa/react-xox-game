@@ -1,21 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const players = [];
-const playerScore = [];
-
-const playersDetail = [
-  {
-    name: players[0],
-    score: playerScore[0],
-    symbol: "X",
-  },
-  {
-    name: players[1],
-    score: playerScore[1],
-    symbol: "O",
-  },
-];
-
 const winCombinations = [
   [0, 1, 2],
   [3, 4, 5],
@@ -31,16 +15,29 @@ const gameSlice = createSlice({
   name: "game",
   initialState: {
     board: Array(9).fill("-"),
-    players,
-    playersDetail,
-    playerScore,
+    playersDetail: [
+      {
+        name: "",
+        score: "-",
+        symbol: "X",
+      },
+      {
+        name: "",
+        score: "-",
+        symbol: "O",
+      },
+    ],
     currentPlayer: "X",
     winnerXOX: "",
     winCombinations,
+    player1Score: [],
+    player2Score: [],
   },
   reducers: {
     setPlayers: (state, action) => {
-      state.players = action.payload;
+      const [player1, player2] = action.payload;
+      state.playersDetail[0].name = player1;
+      state.playersDetail[1].name = player2;
     },
     setBoardCurrentPlayer: (state, action) => {
       state.board = action.payload;
@@ -51,9 +48,6 @@ const gameSlice = createSlice({
     winnerReducer: (state, action) => {
       state.winnerXOX = action.payload;
     },
-    playerScoreReducer: (state, action) => {
-      state.playerScore = action.payload;
-    },
   },
 });
 
@@ -62,5 +56,6 @@ export const {
   setBoardCurrentPlayer,
   changePlayer,
   winnerReducer,
+  resetGame,
 } = gameSlice.actions;
 export default gameSlice.reducer;

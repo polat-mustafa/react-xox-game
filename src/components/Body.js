@@ -4,7 +4,6 @@ import { Grid } from "@chakra-ui/react";
 import Board from "./Board";
 // REDUX
 import { useSelector } from "react-redux";
-import {} from "../redux/game/gameSlice";
 
 const Body = () => {
   const board = useSelector((state) => state.game.board);
@@ -12,9 +11,15 @@ const Body = () => {
 
   useEffect(() => {
     if (winnerXOX === "X") {
-      alert("X wins");
+      alert(`${JSON.parse(localStorage.getItem("players"))[0].name} wins!`);
+      setTimeout(() => {
+        window.location.reload();
+      }, 1000);
     } else if (winnerXOX === "O") {
-      alert("O wins");
+      alert(`${JSON.parse(localStorage.getItem("players"))[1].name} wins!`);
+      setTimeout(() => {
+        window.location.reload();
+      }, 1000);
     }
   }, [winnerXOX]);
 

@@ -1,5 +1,5 @@
-// PAGES 
-import Home from './pages/Home';
+// PAGES
+import Home from "./pages/Home";
 
 function App() {
   return (

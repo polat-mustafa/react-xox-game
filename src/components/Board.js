@@ -21,7 +21,6 @@ const Board = ({ item, index }) => {
     dispatch(changePlayer());
   };
 
-
   /*   useEffect(() => {
     if (
       (board[0] === "X" && board[1] === "X" && board[2] === "X") ||
@@ -78,7 +77,8 @@ const Board = ({ item, index }) => {
           textAlign: "center",
           fontFamily: "Arial",
           fontStyle: "italic",
-          backgroundColor: item === "X" ? "#f5f5f5" : item === "O" ? "#f5f5f5" : "",
+          backgroundColor:
+            item === "X" ? "#f5f5f5" : item === "O" ? "#f5f5f5" : "",
           marginLeft: "100px",
         }}
       >

@@ -1,10 +1,12 @@
 import { Button, Form, Input } from "antd";
-import React from "react";
-import { useDispatch } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { setPlayers } from "../redux/game/gameSlice";
+import PlayerBoard from "./PlayerBoard";
 
 const Header = () => {
   const dispatch = useDispatch();
+  const playersDetail = useSelector((state) => state.game.playersDetail);
 
   const onFinish = (values) => {
     const { player1, player2 } = values;
@@ -14,6 +16,24 @@ const Header = () => {
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
+
+  const resetLocalStorage = () => {
+    localStorage.setItem(
+      "players",
+      JSON.stringify([
+        { name: "Player1", score: "-", symbol: "X" },
+        { name: "Player2", score: "-", symbol: "O" },
+      ])
+    );
+    window.location.reload();
+  };
+
+  useEffect(() => {
+    if (playersDetail[0].name !== "" && playersDetail[1].name !== "") {
+      localStorage.setItem("players", JSON.stringify(playersDetail));
+      window.location.reload();
+    }
+  }, [playersDetail]);
 
   return (
     <>
@@ -32,20 +52,27 @@ const Header = () => {
         onFinishFailed={onFinishFailed}
         autoComplete="off"
         style={{
-          width: "400px",
-          marginTop: "20px",
+          marginTop: "5px",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          flexDirection: "column",
-          padding: "20px",
+          flexDirection: "row",
+          flexWrap: "wrap",
+          width: "100%",
+          height: "100%",
+          backgroundColor: "lightgray",
           borderRadius: "10px",
-          boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.1)",
-          border: "1px solid #e8e8e8",
-          margin: "0 auto",
+          padding: "10px",
+          boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.5)",
+          border: "1px solid #ccc",
+          borderBottom: "none",
+          borderTop: "none",
+          borderLeft: "none",
+          borderRight: "none",
           marginBottom: "20px",
           textAlign: "center",
-          alignContent: "center",
+          fontSize: "20px",
+          fontWeight: "bold",
         }}
       >
         <Form.Item
@@ -57,10 +84,6 @@ const Header = () => {
               message: "Please input your name!",
             },
           ]}
-          style={{
-            marginBottom: "10px",
-            marginTop: "10px",
-          }}
         >
           <Input />
         </Form.Item>
@@ -73,18 +96,37 @@ const Header = () => {
               message: "Please input your name!",
             },
           ]}
-          style={{ marginTop: "10px" }}
         >
           <Input />
         </Form.Item>
 
         <Form.Item>
-          <Button type="text" htmlType="submit">
+          <Button
+            type="primary"
+            htmlType="submit"
+            style={{
+              marginLeft: "10px",
+            }}
+          >
             Submit
           </Button>
         </Form.Item>
+
+        <Form.Item>
+          <Button
+            type="primary"
+            onClick={resetLocalStorage}
+            style={{
+              marginLeft: "10px",
+            }}
+          >
+            Reset Players
+          </Button>
+        </Form.Item>
       </Form>
+      <PlayerBoard />
     </>
   );
 };
+
 export default Header;
