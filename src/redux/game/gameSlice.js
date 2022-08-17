@@ -30,8 +30,6 @@ const gameSlice = createSlice({
     currentPlayer: "X",
     winnerXOX: "",
     winCombinations,
-    player1Score: [],
-    player2Score: [],
   },
   reducers: {
     setPlayers: (state, action) => {
