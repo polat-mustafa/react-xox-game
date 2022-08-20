@@ -6,10 +6,10 @@ import Body from "../components/Body";
 
 const Home = () => {
   return (
-    <>
+    <div className="App">
       <Header />
       <Body />
-    </>
+    </div>
   );
 };
 

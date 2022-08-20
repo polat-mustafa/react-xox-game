@@ -65,8 +65,8 @@ const Board = ({ item, index }) => {
         onClick={onClick}
         style={{
           width: "100px",
-          height: "100px",
-          border: "1px solid #ccc",
+          height: "110px",
+          border: "1px solid black",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
@@ -74,12 +74,11 @@ const Board = ({ item, index }) => {
           fontWeight: "bold",
           color: "black",
           cursor: "pointer",
-          textAlign: "center",
-          fontFamily: "Arial",
-          fontStyle: "italic",
           backgroundColor:
-            item === "X" ? "#f5f5f5" : item === "O" ? "#f5f5f5" : "",
-          marginLeft: "100px",
+            item === "X" ? "red" : item === "O" ? "blue" : "white",
+          transition: "all 0.3s ease-in-out",
+          textAlign: "center",
+          margin: "0 auto",
         }}
       >
         {item}

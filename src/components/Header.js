@@ -52,16 +52,17 @@ const Header = () => {
         onFinishFailed={onFinishFailed}
         autoComplete="off"
         style={{
-          marginTop: "5px",
+          marginTop: "10px",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
+          textAlign: "center",
+          margin: "0 auto",
           flexDirection: "row",
           flexWrap: "wrap",
           width: "100%",
           height: "100%",
-          backgroundColor: "lightgray",
-          borderRadius: "10px",
+          backgroundColor: "lightslategrey",
           padding: "10px",
           boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.5)",
           border: "1px solid #ccc",
@@ -69,7 +70,6 @@ const Header = () => {
           borderTop: "none",
           borderLeft: "none",
           borderRight: "none",
-          marginBottom: "20px",
           textAlign: "center",
           fontSize: "20px",
           fontWeight: "bold",
@@ -85,7 +85,11 @@ const Header = () => {
             },
           ]}
         >
-          <Input />
+          <Input
+            style={{
+              borderRadius: "10px",
+            }}
+          />
         </Form.Item>
         <Form.Item
           label="Player 2"
@@ -97,7 +101,11 @@ const Header = () => {
             },
           ]}
         >
-          <Input />
+          <Input
+            style={{
+              borderRadius: "10px",
+            }}
+          />
         </Form.Item>
 
         <Form.Item>
@@ -106,6 +114,7 @@ const Header = () => {
             htmlType="submit"
             style={{
               marginLeft: "10px",
+              borderRadius: "10px",
             }}
           >
             Submit
@@ -118,6 +127,7 @@ const Header = () => {
             onClick={resetLocalStorage}
             style={{
               marginLeft: "10px",
+              borderRadius: "10px",
             }}
           >
             Reset Players
