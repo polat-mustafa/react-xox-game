@@ -70,7 +70,6 @@ const Header = () => {
           borderTop: "none",
           borderLeft: "none",
           borderRight: "none",
-          textAlign: "center",
           fontSize: "20px",
           fontWeight: "bold",
         }}

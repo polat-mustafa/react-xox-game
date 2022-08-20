@@ -18,7 +18,7 @@ const PlayerBoard = () => {
 
   useEffect(() => {
     if (winnerXOX === "X") {
-      setP1(p1 + 1);
+      setP1((p1) => p1 + 1);
       localStorage.setItem(
         "players",
         JSON.stringify([
@@ -27,7 +27,7 @@ const PlayerBoard = () => {
         ])
       );
     } else if (winnerXOX === "O") {
-      setP2(p2 + 1);
+      setP2((p2) => p2 + 1);
       localStorage.setItem(
         "players",
         JSON.stringify([
@@ -36,9 +36,9 @@ const PlayerBoard = () => {
         ])
       );
     }
-  }, [winnerXOX]);
 
-  console.log(p1);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [winnerXOX]);
 
   return (
     <>

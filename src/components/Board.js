@@ -56,7 +56,7 @@ const Board = ({ item, index }) => {
         return dispatch(winnerReducer("O"));
       }
     }
-  }, [board]);
+  }, [board, winCombinations, dispatch]);
 
   return (
     <>
