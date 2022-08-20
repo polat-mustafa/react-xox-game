@@ -10,15 +10,14 @@ Tic Tac Toe is a game played by two players on a 3x3 grid. The goal of the game 
 
 # Technologies used in this project
 
-### ReactJS
-### Redux
-### LocalStorage
-### Ant Design
-### Chakra UI
+- ReactJS
+- Redux
+- LocalStorage
+- Ant Design
+- Chakra UI
 
 
 # Screens
 
-![1](src/assets/1.png)
+![tictactoe](src/assets/tictactoeapp.png)
 
-![1](src/assets/2.png)
